@@ -1,21 +1,18 @@
 import { useState } from "react";
 import APIUrl from "./APIUrl";
-import {Link, useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const CreateAccount = () => {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
 	const navigate = useNavigate();
-	const [searchParams] = useSearchParams();
-
-	const isNewUser = searchParams.get("newUser");
 
 	const login = async (evt) => {
 		evt.preventDefault();
 
 		try {
-			const response = await fetch(`${APIUrl}/login`, {
+			const response = await fetch(`${APIUrl}/createAccount`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -42,8 +39,7 @@ const Login = () => {
 
 	return (
 		<div>
-			<h1>Login</h1>
-			{isNewUser && <p>Your account  has been create. Please log in.</p>}
+			<h1>Create Account</h1>
 			<form onSubmit={login}>
 				<div className="mb-3">
 					<label htmlFor="username" className="form-label">
@@ -75,12 +71,11 @@ const Login = () => {
 				</div>
 				<p style={{ color: "red" }}>{error}</p>
 				<button type="submit" className="btn btn-primary">
-					Login
+					Create Account
 				</button>
-				<Link to="/createAccount">Create New Account</Link>
 			</form>
 		</div>
 	);
 };
 
-export default Login;
+export default CreateAccount;

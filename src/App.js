@@ -5,6 +5,7 @@ import Login from "./Login";
 import Admin from "./Admin";
 import PostEditor from "./PostEditor";
 import Author from "./Author";
+import CreateAccount from "./CreateAccount";
 
 function App() {
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/login" element={<Login />} />
+					<Route path="/createAccount" element={<CreateAccount />}></Route>
 					<Route path="/admin" element={<Admin />} />
 					<Route
 						path="/admin/postEditor/:id"
